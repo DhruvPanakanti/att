@@ -1,0 +1,18 @@
+package pack1;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class week9 {
+public static void main(String[] args) {
+WebDriver driver=new ChromeDriver(options);
+driver.manage().window().maximize();
+driver.get("https://www.sulekha.com/playSchools/");
+list<WebElement>m=driver.findElement(By.xpath("//h3[@ class='text-base font-bold inline align-middle leading-5 md:text-xl')"));
+for(int I;i<m.sze();++){
+String s=m.get(i).gtText();
+System.out.println("The Text is"+s);
+}
+}
+}
