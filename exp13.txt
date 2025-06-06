@@ -1,0 +1,158 @@
+Design web application with different menu items using Django 
+Step1:Check Python version  
+ python –version 
+Step2: Install virtual environment 
+ py –m pip install virtualenv 
+Step3: create an virtual environment 
+ py –m venv second 
+Step4: activate the environment 
+ .\second\scripts\activate 
+Step5: install django package 
+ pip install Django  
+Step6:  create a project 
+ django-admin startproject program13 
+Step 7: move to project folder 
+ cd program13 
+Step 8: open project program13 inside create templates folder. 
+Templates folder inside create home.html, contactUs.html and dashboard.html 
+Add the below code 
+ home.html 
+1. <!DOCTYPE html> 
+2. <html lang="en"> 
+3. <head> 
+4.     
+<meta charset="UTF-8"> 
+5.     
+6.     
+7.     
+8.     
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Home</title> 
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384
+QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+crossorigin="anonymous"> 
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+crossorigin="anonymous"></script> 
+9. </head> 
+10. <body> 
+11.     
+<h1 class="text-center">Welcome to CMRIT</h1> 
+12.     
+13.         
+14.           
+<nav class="navbar navbar-expand-lg bg-body-tertiary"> 
+<div class="container-fluid"> 
+<a class="navbar-brand" href="#">CMRIT</a> 
+15.           
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data
+bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria
+label="Toggle navigation"> 
+16.             
+17.           
+18.           
+19.             
+20.               
+21.                 
+22.               
+23.               
+24.                 
+25.               
+26.               
+27.                 
+28.               
+29.             
+30.           
+31.         
+32.       
+33.      
+34. </body> 
+35. </html> 
+<span class="navbar-toggler-icon"></span> 
+</button> 
+<div class="collapse navbar-collapse" id="navbarNav"> 
+<ul class="navbar-nav"> 
+<li class="nav-item"> 
+<a class="nav-link active" aria-current="page" href="#">Home</a> 
+</li> 
+<li class="nav-item"> 
+<a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a> 
+</li> 
+<li class="nav-item"> 
+<a class="nav-link" href="{% url 'contactUs' %}">ContactUs</a> 
+</li> 
+</ul> 
+</div> 
+</div> 
+</nav> 
+ contactUs.html 
+1. <!DOCTYPE html> 
+2. <html lang="en"> 
+3. <head> 
+4.     
+<meta charset="UTF-8"> 
+5.     
+6.     
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>ContactUs</title> 
+7. </head> 
+8. <body> 
+9.     
+<h1>CMR Institue of Technology,Medchal, Hyderabad.</h1> 
+10.     
+<a href="{% url 'home' %}">Back to home</a> 
+11. </body> 
+12. </html> 
+ dashboard.html 
+1. <!DOCTYPE html> 
+2. <html lang="en"> 
+3. <head> 
+4.     
+<meta charset="UTF-8"> 
+5.     
+6.     
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Dashboard</title> 
+7. </head> 
+8. <body> 
+9.     
+<h1>Welcome to CMRIT Dashboard</h1> 
+10.     
+<a href="{% url 'home' %}">Back to home</a>     
+11. </body> 
+12. </html> 
+Step 9: open project program13 subfolder Write below code 
+ urls.py 
+1. from django.contrib import admin 
+2. from django.urls import path 
+3. from . import index 
+4. urlpatterns = [ 
+5. #path('admin/', admin.site.urls), 
+6. path('',index.home,name='home'), 
+7. path('dashboard/', index.dashboard,name='dashboard'), 
+8. path('contactUs/', index.contactUs,name='contactUs'), 
+9. ] 
+ settings.py 
+1. import os 
+2. templates =>DIRS =>os.path.join(BASE_DIR,’templates’) 
+ index.py 
+1. from django.http import HttpResponse 
+2. from django.shortcuts import render 
+3.  
+4. def home(request): 
+5.     
+return render(request,'home.html') 
+6.  
+7. def dashboard(request): 
+8.     
+return render(request,'dashboard.html') 
+9.  
+10. def contactUs(request): 
+11.     
+return render(request,'contactUs.html') 
+Step 10: run the server 
+ py manage.py runserver 
+Step 11: open browser, run http://127.0.0.1:8000/
